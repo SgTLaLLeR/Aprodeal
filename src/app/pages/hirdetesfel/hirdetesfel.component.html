@@ -1,0 +1,30 @@
+<div class="main_component">
+  <div class="div-flex">
+    <div class="box">
+      <h1>Hirdetés feladása!</h1>
+      <form [formGroup]="hirdetesfelForm" (ngSubmit)="onSubmit()" (ngSubmit)="uploadimg()"  >
+        <div> <mat-form-field color="accent"><mat-label  id="nev">Hirdetés neve:</mat-label><input matInput type="text" formControlName="nev" required/></mat-form-field></div>
+        <div><mat-form-field color="accent"><mat-label  id="ar">Ár:</mat-label><input matInput type="text" formControlName="ar" required/></mat-form-field></div>
+        <div><mat-form-field color="accent"><mat-label  id="leiras">Leirás:</mat-label><input matInput type="text" formControlName="leiras" required/></mat-form-field></div>
+        <div><mat-form-field color="accent"><mat-label  id="elerhetoseg">Elérhetőség:</mat-label><input matInput type="text" formControlName="elerhetoseg" required/></mat-form-field></div>
+
+        <!--      <div><mat-form-field color="accent"><mat-label  id="zipcode">Irányítószám:</mat-label><input matInput type="password" formControlName="zipcode"/></mat-form-field></div>-->
+        <!--      <div><mat-form-field color="accent"><mat-label  id="Megye">Megye:</mat-label><input matInput type="password" formControlName="megye"/></mat-form-field></div>-->
+        <!--      <div><mat-form-field color="accent"><mat-label  id="Varos">Város:</mat-label><input matInput type="password" formControlName="varos"/></mat-form-field></div>-->
+        <!--      <div><mat-form-field color="accent"><mat-label  id="utcahaz">Utca házszám:</mat-label><input matInput type="password" formControlName="utcahaz"/></mat-form-field></div>-->
+
+        <span>
+          <h1>Fénykép feltöltése:</h1>
+          <div><input (change)="upload($event)" type="file"   formControlName="imageURL"></div>
+      <span><button  mat-raised-button color="accent" type="submit">Feladás</button></span>
+
+
+
+
+
+  </span>
+      </form>
+    </div>
+  </div>
+
+</div>

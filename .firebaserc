@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "aprodeal": {
+      "hosting": {
+        "prototype": [
+          "aprodeal"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "aprodeal"
+  }
+}

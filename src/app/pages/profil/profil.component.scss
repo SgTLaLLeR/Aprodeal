@@ -1,0 +1,32 @@
+.main{
+  height: 100vh;
+  align-items: center;
+  font-size: 26px;
+  background-color: white;
+
+}
+
+.belso{
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  font-size: 26px;
+  background-color: grey;
+  border-radius: 15px;// 50px 30px 5px;
+  position: absolute;
+  border: solid black 1px;
+
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+.cim{
+  height: 60%;
+  font-size: 26px;
+}
+
