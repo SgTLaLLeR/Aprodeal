@@ -1,11 +1,28 @@
 <div class="main">
   <span class="cim" style="color: black" position="absolute">Profil adatok</span>
 
-  <div class="belso">
+  <div class="belso" *ngFor="let item of users">
     <div>
-      <img width="120" height="120" [src]=""/>
+      <h1>Profil adatok</h1>
+      <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+
+      <div> <mat-form-field color="accent"><mat-label  id="username">{{item.username}}:</mat-label><input matInput type="text"  formControlName="username"  required/></mat-form-field></div>
+      <div> <mat-form-field color="accent"><mat-label  id="email">{{item.email}}:</mat-label><input matInput type="text"  formControlName="email"  required/></mat-form-field></div>
+        <div formGroupName="name">
+
+        <div> <mat-form-field color="accent"><mat-label  id="firstname">{{item.name.firstname}}:</mat-label><input matInput type="text"  formControlName="firstname"  required/></mat-form-field></div>
+        <div> <mat-form-field color="accent"><mat-label  id="lastname">{{item.name.lastname}}:</mat-label><input matInput type="text"  formControlName="lastname"  required/></mat-form-field></div>
+        </div>
+      </form>
+
     </div>
-    <span></span>
+    <span> </span>
+
+
+
+
+
+
 
   </div>
 

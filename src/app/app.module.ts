@@ -22,6 +22,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule, FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { ProfilComponent } from './pages/profil/profil.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [

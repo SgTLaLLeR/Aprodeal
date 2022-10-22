@@ -17,6 +17,7 @@ export class UserService {
 
   }
   getAll(){
+    return this.store.collection<User>(this.collectionName).valueChanges();
 
   }
   update(user:User){
@@ -24,6 +25,10 @@ export class UserService {
 
   }
   delete(){
+
+  }
+  getUserById(userid: string){
+    return this.store.collection<User>(this.collectionName, ref => ref.where('id','==', userid)).valueChanges();
 
   }
 }

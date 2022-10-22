@@ -4,7 +4,7 @@ import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/f
 import {User} from "../models/Users";
 import {Hirdetes} from "../models/Hirdetesek";
 import {setUserId} from "@angular/fire/analytics";
-import {Auth, authState} from "@angular/fire/auth";
+import {Auth, authState, beforeAuthStateChanged, getAuth, onAuthStateChanged, user} from "@angular/fire/auth";
 
 
 
@@ -15,7 +15,12 @@ export class AuthService {
 
 
 
+
   constructor(private auth: AngularFireAuth, public store: AngularFirestore) { }
+
+
+
+
 
   login(email: string, password: string){
 
@@ -54,5 +59,6 @@ export class AuthService {
       merge: true,
     });
   }
+
 
 }
