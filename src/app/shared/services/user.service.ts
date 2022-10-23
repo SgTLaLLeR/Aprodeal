@@ -24,7 +24,8 @@ export class UserService {
     return this.store.collection<User>(this.collectionName).doc(user.id).set(user);
 
   }
-  delete(){
+  delete(id: string){
+    return this.store.collection<User>(this.collectionName).doc(id).delete();
 
   }
   getUserById(userid: string){
