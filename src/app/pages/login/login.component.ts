@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/fooldal');
     }).catch(error=>{
       console.error(error);
+      alert("Nem sikerült a bejelntkezés!");
       this.flag=true;
 
     });

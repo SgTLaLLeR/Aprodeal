@@ -32,4 +32,5 @@ export class UserService {
     return this.store.collection<User>(this.collectionName, ref => ref.where('id','==', userid)).valueChanges();
 
   }
+
 }

@@ -4,7 +4,16 @@ import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/f
 import {User} from "../models/Users";
 import {Hirdetes} from "../models/Hirdetesek";
 import {setUserId} from "@angular/fire/analytics";
-import {Auth, authState, beforeAuthStateChanged, getAuth, onAuthStateChanged, user} from "@angular/fire/auth";
+import {
+  Auth,
+  authState,
+  beforeAuthStateChanged,
+  deleteUser,
+  getAuth,
+  onAuthStateChanged,
+  user
+} from "@angular/fire/auth";
+import * as firebase from 'firebase/compat';
 
 
 
@@ -38,27 +47,14 @@ export class AuthService {
   logout(){
     return  this.auth.signOut();
   }
-
-  SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.store.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      id: user.id,
-      email: user.email,
-      username: user.username,
-      name:{
-        firstname: user.firstname,
-        lastname: user.lastname,
-
-      }
+  deleteAuthUser(){
+    // @ts-ignore
 
 
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
   }
+
+
+
 
 
 }

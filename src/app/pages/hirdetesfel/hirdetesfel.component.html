@@ -15,7 +15,7 @@
 
         <span>
           <h1>Fénykép feltöltése:</h1>
-          <div><input (change)="upload($event)" type="file"   formControlName="imageURL"></div>
+          <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imageURL"></div>
       <span><button  mat-raised-button color="accent" type="submit">Feladás</button></span>
 
 

@@ -2,12 +2,13 @@
   <span class="cim" style="color: black" position="absolute">Profil adatok</span>
 
   <div class="belso" *ngFor="let item of users">
-    <div>
-      <h1>Profil adatok</h1>
-      <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <div >
+      <h1>Profil adatok <button mat-raised-button color="accent"><mat-icon *ngIf="flag==false" (click)="setFlag()">edit</mat-icon><mat-icon *ngIf="flag" (click)="desetFlag()">close</mat-icon></button></h1>
+      <img width="120" height="120" [src]=""/>
+      <form *ngIf="flag" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
       <div><span>Felhasználónév:</span></div>
       <div> <mat-form-field color="accent"><mat-label  id="username">{{item.username}}</mat-label><input matInput type="text"  formControlName="username" placeholder="{{item.username}}" /></mat-form-field></div>
-        <div><span>Emailcím:</span></div>
+        <div><span>Email cím:</span></div>
       <div> <mat-form-field color="accent"><mat-label  id="email">{{item.email}}</mat-label><input matInput type="text"  formControlName="email" /></mat-form-field></div>
         <div formGroupName="name">
           <div><span>Keresztnév:</span></div>
@@ -19,7 +20,19 @@
 
 
       </form>
-      <span> <button mat-raised-button color="accent" (click)="deleteUser()">Fiók törlése</button></span>
+      <br>
+      <span *ngIf="flag"> <button mat-raised-button color="accent" (click)="deleteUser()">Fiók törlése</button></span>
+
+    </div>
+    <div *ngIf="flag==false">
+      <div><span>Felhasználónév:  {{item.username}}</span></div>
+      <br>
+      <div><span>Email cím:  {{item.email}}</span></div>
+      <br>
+      <div><span>Keresztnév:  {{item.name.firstname}}</span></div>
+      <br>
+      <div><span>Vezetéknév:  {{item.name.lastname}}</span></div>
+
 
     </div>
     <span> </span>

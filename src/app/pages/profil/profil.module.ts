@@ -6,6 +6,7 @@ import { ProfilComponent } from './profil.component';
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -13,12 +14,13 @@ import {MatButtonModule} from "@angular/material/button";
   declarations: [
     ProfilComponent
   ],
-  imports: [
-    CommonModule,
-    ProfilRoutingModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        ProfilRoutingModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatIconModule
+    ]
 })
 export class ProfilModule { }

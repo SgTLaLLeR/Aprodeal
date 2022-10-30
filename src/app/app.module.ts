@@ -24,6 +24,8 @@ import {AngularFireModule, FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { ProfilComponent } from './pages/profil/profil.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     //RegisterComponent,
     MenuComponent,
     //ProfilComponent
+
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+
 
 
 

@@ -10,7 +10,7 @@ import {AuthService} from "./shared/services/auth.service";
 })
 export class AppComponent {
 
-  title = 'prototype';
+  title = 'Aprodeal';
   page='main';
   loggedInUser?: firebase.default.User | null;
   //_router: string;

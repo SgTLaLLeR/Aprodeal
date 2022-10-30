@@ -6,7 +6,7 @@ import {HirdetesService} from "../../shared/services/hirdetes.service";
 import {Hirdetes} from "../../shared/models/Hirdetesek";
 import {Firestore} from "@angular/fire/firestore";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 
 
 
@@ -25,9 +25,28 @@ export class HirdetesfelComponent implements OnInit {
   });
 
 
-  constructor(private authService: AuthService, private router: Router, private hirdetesService: HirdetesService, private imgstore: AngularFireStorage) { }
+  constructor(private authService: AuthService, private router: Router, private hirdetesService: HirdetesService, private imgstore: AngularFireStorage,) { }
+  basePath='images/';
+  downloadableURL='';
+  task!: AngularFireUploadTask;
+
+
 
   ngOnInit(): void {
+  }
+  async onFileChanged(event:any){
+    const file=event.target.files[0];
+    if(file){
+      const filePath=`${this.basePath}/${file.name}`;
+      this.task=this.imgstore.upload(filePath,file);
+
+      (await this.task).ref.getDownloadURL().then(url => {this.downloadableURL = url; });
+      console.log(this.downloadableURL);
+    }else{
+      alert('Nincs fénykép kiválasztva');
+      this.downloadableURL='';
+    }
+
   }
   onSubmit(){
 
@@ -45,6 +64,7 @@ export class HirdetesfelComponent implements OnInit {
 
 
     };
+    this.imgstore.ref('/images').put(hirdetes.imageURL);
     this.hirdetesService.create(hirdetes).then(_=>{
       console.log('Siekeres beszuras');
     }).catch(error=>{
@@ -59,9 +79,10 @@ export class HirdetesfelComponent implements OnInit {
 
   }
   uploadimg(){
-    this.imgstore.upload(this.path, this.path);
+
 
   }
+
 
 
 }
