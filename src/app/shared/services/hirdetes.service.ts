@@ -3,6 +3,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Hirdetes} from "../models/Hirdetesek";
 import {from, Observable, switchMap} from "rxjs";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 export class HirdetesService {
   collectionName='Hirdetések';
 
-  constructor(private store:AngularFirestore) { }
+  constructor(private store:AngularFirestore, private storage:AngularFireStorage) { }
 
   create(hirdetes : Hirdetes){
     hirdetes.id=this.store.createId();
@@ -18,6 +19,14 @@ export class HirdetesService {
 
   }
 
+  getAll(){
+    return this.store.collection<Hirdetes>(this.collectionName).valueChanges();
+  }
 
+  loadImage(imageURL: string){
+    return this.storage.ref(imageURL).getDownloadURL();
+
+
+  }
 
 }

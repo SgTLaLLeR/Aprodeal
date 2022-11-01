@@ -1,11 +1,13 @@
 <div class="main">
-  <span class="cim" style="color: black" position="absolute">Profil adatok</span>
+  <span class="cim" style="color: black" position="absolute">Profil</span>
 
   <div class="belso" *ngFor="let item of users">
     <div >
       <h1>Profil adatok <button mat-raised-button color="accent"><mat-icon *ngIf="flag==false" (click)="setFlag()">edit</mat-icon><mat-icon *ngIf="flag" (click)="desetFlag()">close</mat-icon></button></h1>
-      <img width="120" height="120" [src]=""/>
+      <img width="120" height="120" src="{{image}}">
       <form *ngIf="flag" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+        <h1>Profile kép feltöltése:</h1>
+        <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imgURL"></div>
       <div><span>Felhasználónév:</span></div>
       <div> <mat-form-field color="accent"><mat-label  id="username">{{item.username}}</mat-label><input matInput type="text"  formControlName="username" placeholder="{{item.username}}" /></mat-form-field></div>
         <div><span>Email cím:</span></div>
@@ -15,7 +17,10 @@
           <div> <mat-form-field color="accent"><mat-label  id="firstname">{{item.name.firstname}}</mat-label><input matInput type="text"  formControlName="firstname"  /></mat-form-field></div>
           <div><span>Vezetéknév:</span></div>
           <div> <mat-form-field color="accent"><mat-label  id="lastname">{{item.name.lastname}}</mat-label><input matInput type="text"  formControlName="lastname"  /></mat-form-field></div>
+
+
         </div>
+
         <span><button mat-raised-button color="accent" type="submit">Adatok változtatása</button></span>
 
 

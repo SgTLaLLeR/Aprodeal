@@ -13,7 +13,8 @@
 
       <div fxFlex fxLayout fxLayoutAlign="end none" fxHide.xs>
         <ul fxLayout fxLayoutGap="20px"  class="menu">
-          <li *ngIf="(loggedInUser)"><a routerLink="/hirdetesfel"><mat-icon>add</mat-icon> Hirdetés feladása</a></li>
+          <li><a routerLink="/hirdetesek"><mat-icon>label</mat-icon> Hírdetések</a></li>
+          <li *ngIf="(loggedInUser)"><a routerLink="/hirdetesfel"><mat-icon>sell</mat-icon> Hirdetés feladása</a></li>
           <li *ngIf="(loggedInUser)"><a routerLink="/profil"><mat-icon>account_circle</mat-icon> Profilom</a></li>
           <li><a routerLink="/fooldal"><mat-icon>home</mat-icon> Főoldal</a></li>
           <li *ngIf="!(loggedInUser)"><a routerLink="/signup">Regisztráció</a></li>

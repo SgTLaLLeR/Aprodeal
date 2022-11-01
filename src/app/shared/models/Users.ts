@@ -7,6 +7,7 @@ export interface User{
     lastname:string;
 
   }
+  imgURL: string;
   // lakcim:{
   //   zipcode:number;
   //   megye:string;

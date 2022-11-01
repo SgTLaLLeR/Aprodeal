@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../models/Users";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class UserService {
   collectionName='Users';
   actaulid='';
 
-  constructor(private store: AngularFirestore) { }
+  constructor(private store: AngularFirestore, private storage: AngularFireStorage) { }
 
   creat(user: User){
     this.actaulid=user.id;
@@ -30,6 +31,11 @@ export class UserService {
   }
   getUserById(userid: string){
     return this.store.collection<User>(this.collectionName, ref => ref.where('id','==', userid)).valueChanges();
+
+  }
+  loadProfileImage(imageURL: string){
+    return this.storage.ref(imageURL).getDownloadURL();
+
 
   }
 

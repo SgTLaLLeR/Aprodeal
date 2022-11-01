@@ -9,6 +9,7 @@ import {UserService} from "../../shared/services/user.service";
 import {FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import * as firebase from 'firebase/compat';
 import {Router} from "@angular/router";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 
 
 
@@ -20,12 +21,16 @@ import {Router} from "@angular/router";
 
 export class ProfilComponent implements OnInit, OnChanges {
 
-
+  basePath='profile/';
+  downloadableURL='';
+  task!: AngularFireUploadTask;
+  image?: string;
 
   users: Array<User>=[];
   editUserForm=new FormGroup({
     username: new FormControl(''),
     email:new FormControl(''),
+    imgURL: new FormControl(''),
     name: new FormGroup({
       firstname: new FormControl(''),
       lastname: new FormControl(''),
@@ -35,7 +40,9 @@ export class ProfilComponent implements OnInit, OnChanges {
 
 
 
-  constructor(private authService:AuthService, private afs: AngularFirestore, private userserv: UserService, private auth: AngularFireAuth, private router : Router) { }
+  constructor(private authService:AuthService, private afs: AngularFirestore, private userserv: UserService,
+              private auth: AngularFireAuth, private router : Router, private  imgstore:AngularFireStorage
+  ) { }
 
 
 
@@ -44,19 +51,45 @@ export class ProfilComponent implements OnInit, OnChanges {
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     this.userserv.getUserById(user.uid).subscribe(userz=>{
       this.users=userz;
-      console.log(this.users);
+      this.userserv.loadProfileImage(this.users[0].imgURL).subscribe(data=>{
+        this.image=data;
+      })
+
+      console.log('Szyut',this.users);
     })
+    // this.userserv.loadProfileImage(this.users[].imgURL).subscribe(data=>{
+    //   this.image=data;
+    // })
     console.log('ASDER',this.auth.currentUser);
 
 
 
+
+
+  }
+  async onFileChanged(event:any) {
+    const file = event.target.files[0];
+    if (file) {
+      const filePath = `${this.basePath}/${file.name}`;
+      this.task = this.imgstore.upload(filePath, file);
+
+      (await this.task).ref.getDownloadURL().then(url => {
+        this.downloadableURL = url;
+      });
+      console.log(this.downloadableURL);
+    } else {
+      alert('Nincs fénykép kiválasztva');
+      this.downloadableURL = '';
+    }
   }
   onSubmit(){
+    const urlreg=this.editUserForm.get('imgURL')?.value.split('fakepath\\');
     const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     const user: User={
       id: userdata.uid,
       email: this.editUserForm.get('email')?.value,
       username: this.editUserForm.get('username')?.value,
+      imgURL:'profile/'+urlreg[1],
       name:{
         firstname: this.editUserForm.get('name.firstname')?.value,
         lastname: this.editUserForm.get('name.lastname')?.value
@@ -65,6 +98,7 @@ export class ProfilComponent implements OnInit, OnChanges {
 
     };
     console.log(this.editUserForm.value);
+    this.imgstore.ref('/profile').put(user.imgURL);
     this.userserv.update(user).then(_=>{
       console.log('Sikeres adatmódosítás');
       this.flag=false;

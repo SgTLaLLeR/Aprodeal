@@ -49,7 +49,7 @@ export class HirdetesfelComponent implements OnInit {
 
   }
   onSubmit(){
-
+    const urlreg=this.hirdetesfelForm.get('imageURL')?.value.split('fakepath\\');
     //this.router.navigateByUrl('/#');
     const hirdetes: Hirdetes={
       id:'',
@@ -57,7 +57,7 @@ export class HirdetesfelComponent implements OnInit {
       ar:this.hirdetesfelForm.get('ar')?.value,
       leiras:this.hirdetesfelForm.get('leiras')?.value,
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
-      imageURL:this.hirdetesfelForm.get('imageURL')?.value
+      imageURL:'images/'+urlreg[1]
 
 
 
