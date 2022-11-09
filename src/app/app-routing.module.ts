@@ -26,6 +26,8 @@ const routes: Routes = [
   { path: 'hirdetesfel', loadChildren: () => import('./pages/hirdetesfel/hirdetesfel.module').then(m => m.HirdetesfelModule), canActivate:[AuthGuard] },
 
   { path: 'hirdetesek', loadChildren: () => import('./pages/hirdetesek/hirdetesek.module').then(m => m.HirdetesekModule) },
+
+  { path: 'hirdeteseim', loadChildren: () => import('./pages/hirdeteseim/hirdeteseim.module').then(m => m.HirdeteseimModule) },
   {
     path:'**',
     redirectTo:'/not-found',

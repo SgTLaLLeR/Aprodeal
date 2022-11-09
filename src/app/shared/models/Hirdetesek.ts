@@ -5,5 +5,6 @@ export interface Hirdetes{
   leiras:string;
   elerhetoseg: string;
   imageURL: string;
+  userID: string;
 
 }

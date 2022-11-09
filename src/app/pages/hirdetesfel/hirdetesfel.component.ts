@@ -7,6 +7,7 @@ import {Hirdetes} from "../../shared/models/Hirdetesek";
 import {Firestore} from "@angular/fire/firestore";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
+import * as firebase from "firebase/compat";
 
 
 
@@ -49,6 +50,7 @@ export class HirdetesfelComponent implements OnInit {
 
   }
   onSubmit(){
+    const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     const urlreg=this.hirdetesfelForm.get('imageURL')?.value.split('fakepath\\');
     //this.router.navigateByUrl('/#');
     const hirdetes: Hirdetes={
@@ -57,7 +59,8 @@ export class HirdetesfelComponent implements OnInit {
       ar:this.hirdetesfelForm.get('ar')?.value,
       leiras:this.hirdetesfelForm.get('leiras')?.value,
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
-      imageURL:'images/'+urlreg[1]
+      imageURL:'images/'+urlreg[1],
+      userID:user.uid
 
 
 

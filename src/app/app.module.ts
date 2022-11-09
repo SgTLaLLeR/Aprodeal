@@ -22,7 +22,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule, FIREBASE_OPTIONS} from "@angular/fire/compat";
 import { ProfilComponent } from './pages/profil/profil.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -47,6 +47,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatIconModule,
     FlexLayoutModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     //provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),

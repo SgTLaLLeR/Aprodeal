@@ -4,12 +4,12 @@
   <div class="belso" *ngFor="let item of users">
     <div >
       <h1>Profil adatok <button mat-raised-button color="accent"><mat-icon *ngIf="flag==false" (click)="setFlag()">edit</mat-icon><mat-icon *ngIf="flag" (click)="desetFlag()">close</mat-icon></button></h1>
-      <img width="120" height="120" src="{{image}}">
+      <div class="profileimg"><img width="150" height="150" src="{{image}}" /></div>
       <form *ngIf="flag" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
         <h1>Profile kép feltöltése:</h1>
         <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imgURL"></div>
       <div><span>Felhasználónév:</span></div>
-      <div> <mat-form-field color="accent"><mat-label  id="username">{{item.username}}</mat-label><input matInput type="text"  formControlName="username" placeholder="{{item.username}}" /></mat-form-field></div>
+      <div> <mat-form-field color="accent"><mat-label  id="username">{{item.username}}</mat-label><input matInput type="text"   formControlName="username" placeholder="{{item.username}}" /></mat-form-field></div>
         <div><span>Email cím:</span></div>
       <div> <mat-form-field color="accent"><mat-label  id="email">{{item.email}}</mat-label><input matInput type="text"  formControlName="email" /></mat-form-field></div>
         <div formGroupName="name">
@@ -40,6 +40,7 @@
 
 
     </div>
+
     <span> </span>
 
 
@@ -50,4 +51,5 @@
 
   </div>
 
+  <button mat-raised-button routerLink="/hirdeteseim">Hirdetéseim</button>
 </div>

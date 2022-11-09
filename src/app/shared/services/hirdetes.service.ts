@@ -28,5 +28,16 @@ export class HirdetesService {
 
 
   }
+  getAddByUserId(userID: string){
+    return this.store.collection<Hirdetes>(this.collectionName,ref=> ref.where('userID','==',userID)).valueChanges();
+  }
+  deleteAdd(id:string){
+    return this.store.collection<Hirdetes>(this.collectionName).doc(id).delete();
+
+
+  }
+  update(hirdetes : Hirdetes){
+    return this.store.collection<Hirdetes>(this.collectionName).doc(hirdetes.id.toString()).set(hirdetes);
+  }
 
 }

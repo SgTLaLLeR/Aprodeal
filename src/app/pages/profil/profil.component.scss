@@ -35,3 +35,9 @@ div {
 .mat-button {
   width: 150px;
 }
+
+.profileimg > img{
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+}
