@@ -1,10 +1,11 @@
 <div class="main">
   <span class="cim" style="color: black" position="absolute">Profil</span>
+  <button mat-raised-button routerLink="/hirdeteseim">Hirdetéseim</button>
 
   <div class="belso" *ngFor="let item of users">
     <div >
       <h1>Profil adatok <button mat-raised-button color="accent"><mat-icon *ngIf="flag==false" (click)="setFlag()">edit</mat-icon><mat-icon *ngIf="flag" (click)="desetFlag()">close</mat-icon></button></h1>
-      <div class="profileimg"><img width="150" height="150" src="{{image}}" /></div>
+      <div class="profileimg" align="center"><img width="150" height="150" src="{{image}}" /></div>
       <form *ngIf="flag" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
         <h1>Profile kép feltöltése:</h1>
         <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imgURL"></div>
@@ -51,5 +52,5 @@
 
   </div>
 
-  <button mat-raised-button routerLink="/hirdeteseim">Hirdetéseim</button>
+
 </div>
