@@ -34,6 +34,9 @@ export class HirdetesekComponent implements OnInit {
   loadImage(){
 
   }
+  setCurrentAdd(id: string){
+    this.serv.currentAdd=id;
+  }
 
 
 

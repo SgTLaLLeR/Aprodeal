@@ -4,12 +4,16 @@ import {Hirdetes} from "../models/Hirdetesek";
 import {from, Observable, switchMap} from "rxjs";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {arrayUnion} from "@angular/fire/firestore";
+import {user} from "@angular/fire/auth";
+import { firestore } from 'firebase-admin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HirdetesService {
   collectionName='Hirdetések';
+  currentAdd='';
 
   constructor(private store:AngularFirestore, private storage:AngularFireStorage) { }
 
@@ -38,6 +42,16 @@ export class HirdetesService {
   }
   update(hirdetes : Hirdetes){
     return this.store.collection<Hirdetes>(this.collectionName).doc(hirdetes.id.toString()).set(hirdetes);
+  }
+  getAddById(id: string){
+    return this.store.collection<Hirdetes>(this.collectionName, ref=> ref.where('id','==',id)).valueChanges();
+  }
+
+  reportedByUser(userid: string, id: string){
+    return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
+      reportedByUserid : firestore.FieldValue.arrayUnion(userid)
+    });
+
   }
 
 }

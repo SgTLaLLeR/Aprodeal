@@ -28,6 +28,8 @@ const routes: Routes = [
   { path: 'hirdetesek', loadChildren: () => import('./pages/hirdetesek/hirdetesek.module').then(m => m.HirdetesekModule) },
 
   { path: 'hirdeteseim', loadChildren: () => import('./pages/hirdeteseim/hirdeteseim.module').then(m => m.HirdeteseimModule) },
+
+  { path: 'egyhirdetes', loadChildren: () => import('./pages/egyhirdetes/egyhirdetes.module').then(m => m.EgyhirdetesModule) },
   {
     path:'**',
     redirectTo:'/not-found',

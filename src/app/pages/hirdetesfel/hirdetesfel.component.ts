@@ -60,6 +60,7 @@ export class HirdetesfelComponent implements OnInit {
       leiras:this.hirdetesfelForm.get('leiras')?.value,
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
+      reportedByUserid: [],
       userID:user.uid
 
 
