@@ -1,0 +1,46 @@
+
+<div class="main">
+  <h1 align="center">Aktuális Hírdetéseid</h1>
+  <br>
+  <br>
+<div *ngFor="let item of hirdetesek">
+  <table align="center" *ngIf="flag" >
+    <tr>
+    <th>Név:</th>
+    <th>Ár:</th>
+    <th>Leírás:</th>
+    <th>Kép:</th>
+    <th>Módosítás:</th>
+    <th>Törlés:</th>
+    </tr>
+    <tbody>
+    <tr >
+      <td>{{item.nev}}</td>
+      <td>{{item.ar}}</td>
+      <td>{{item.leiras}}</td>
+      <td><img  width="100px" height="100px" src="{{item.imageURL}}"></td>
+      <td align="center"><mat-icon color="accent" (click)="desetFlag()"  (click)="currentId(item.id)">edit</mat-icon></td>
+
+      <td align="center"><mat-icon color="accent" (click)="deleteAdd(item.id)">delete</mat-icon></td>
+
+
+    </tr>
+
+    </tbody>
+  </table>
+  <br>
+
+</div>
+  <div *ngIf="flag==false" class="form">
+    <form [formGroup]="editAddsForm" (ngSubmit)="onSubmit()">
+      <div><mat-form-field color="accent"><mat-label id="nev">Hirdetés neve:</mat-label><input matInput type="text" formControlName="nev" required/></mat-form-field></div>
+      <div><mat-form-field color="accent"><mat-label  id="ar">Ár:</mat-label><input matInput type="text" formControlName="ar" required/></mat-form-field></div>
+      <div> <mat-form-field color="accent"><mat-label  id="leiras">Leirás:</mat-label><input matInput type="text" formControlName="leiras" required/></mat-form-field></div>
+      <div> <mat-form-field color="accent"><mat-label  id="elerhetoseg">Elérhetőség:</mat-label><input matInput type="text" formControlName="elerhetoseg" required/></mat-form-field></div>
+      <h1>Fénykép feltöltése:</h1>
+      <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imageURL"></div>
+
+      <button mat-raised-button color="accent"  type="submit"   >Módosít</button>
+    </form>
+  </div>
+</div>

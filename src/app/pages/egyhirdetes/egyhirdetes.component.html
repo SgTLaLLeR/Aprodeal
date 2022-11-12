@@ -1,0 +1,16 @@
+<p>egyhirdetes works!</p>
+<div class="wrapper">
+  <div class="tile" *ngFor="let item of hirdetes">
+
+    <p>{{item.nev}}</p>
+    <p>Ár: {{item.ar}} Ft</p>
+    <img  width="250px" height="250px" src="{{image}}">
+    <div *ngFor="let user of user">
+      <p>Eladó: {{user.username}}</p>
+      <button mat-raised-button color="accent" (click)="reportAdd(user.id, item.id)">Hirdetés jelentése</button>
+    </div>
+
+
+
+  </div>
+</div>
