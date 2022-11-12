@@ -47,9 +47,9 @@ export class HirdetesService {
   }
 
   reportedByUser(userid: string, id: string){
-   // return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
-   //    reportedByUserid : FieldValue.arrayUnion(userid)
-   //  });
+    // return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
+    //    reportedByUserid : arrayUnion(userid),
+    //  });
 
   }
 
