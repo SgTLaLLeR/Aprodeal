@@ -5,7 +5,7 @@ export interface Hirdetes{
   leiras:string;
   elerhetoseg: string;
   imageURL: string;
-  reportedByUserid: string[];
+  reportedByUserid: string;
   userID: string;
 
 

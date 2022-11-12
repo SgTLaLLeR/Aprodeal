@@ -4,9 +4,8 @@ import {Hirdetes} from "../models/Hirdetesek";
 import {from, Observable, switchMap} from "rxjs";
 import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {arrayUnion} from "@angular/fire/firestore";
+import {arrayUnion, FieldValue} from "@angular/fire/firestore";
 import {user} from "@angular/fire/auth";
-import { firestore } from 'firebase-admin';
 
 @Injectable({
   providedIn: 'root'
@@ -48,9 +47,9 @@ export class HirdetesService {
   }
 
   reportedByUser(userid: string, id: string){
-    return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
-      reportedByUserid : firestore.FieldValue.arrayUnion(userid)
-    });
+    // return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
+    //    reportedByUserid : arrayUnion(userid),
+    //  });
 
   }
 
