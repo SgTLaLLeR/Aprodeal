@@ -4,7 +4,6 @@ import {AuthService} from "../../shared/services/auth.service";
 import {Router} from "@angular/router";
 import {HirdetesService} from "../../shared/services/hirdetes.service";
 import {Hirdetes} from "../../shared/models/Hirdetesek";
-import {Firestore} from "@angular/fire/firestore";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import * as firebase from "firebase/compat";
@@ -60,7 +59,7 @@ export class HirdetesfelComponent implements OnInit {
       leiras:this.hirdetesfelForm.get('leiras')?.value,
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
-      reportedByUserid: [],
+      reportedByUserid: '',
       userID:user.uid
 
 
