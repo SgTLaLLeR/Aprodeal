@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Hirdetes} from "../models/Hirdetesek";
-import {from, Observable, switchMap} from "rxjs";
-import {getDownloadURL, ref, Storage, uploadBytes} from "@angular/fire/storage";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {arrayUnion, FieldValue} from "@angular/fire/firestore";
+import firebase from "firebase/compat/app"
+import {arrayUnion} from "@angular/fire/firestore";
 import {user} from "@angular/fire/auth";
+import firestore = firebase.firestore;
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +46,19 @@ export class HirdetesService {
     return this.store.collection<Hirdetes>(this.collectionName, ref=> ref.where('id','==',id)).valueChanges();
   }
 
-  reportedByUser(userid: string, id: string){
-    // return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
-    //    reportedByUserid : arrayUnion(userid),
-    //  });
-
+  reportedByUser(userid: string, id: string) {
+    return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
+      reportedByUserid: firestore.FieldValue.arrayUnion(userid)
+    })
   }
+  alreadyreported(userid: string, id: string){
+    return this.store.collection<Hirdetes>(this.collectionName, ref => ref.where('reportedByUserid', 'array-contains',userid)).valueChanges();
+  }
+  incrementNumber(id: string){
+    return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
+      reportNumbers: firestore.FieldValue.increment(1)
+    })
+  }
+
 
 }

@@ -69,7 +69,8 @@ export class HirdeteseimComponent implements OnInit {
       leiras:this.editAddsForm.get('leiras')?.value,
       elerhetoseg:this.editAddsForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
-      reportedByUserid:'',
+      reportedByUserid:[],
+      reportNumbers:0,
       userID:user.uid
 
     }

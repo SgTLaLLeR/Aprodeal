@@ -44,6 +44,7 @@ export class SignupComponent implements OnInit {
         id: cred.user?.uid as string,
         email: this.signUpForm.get('email')?.value,
         username: this.signUpForm.get('username')?.value,
+        lastaddvisitedID:'',
         imgURL:'',
         name:{
           firstname: this.signUpForm.get('name.firstname')?.value,

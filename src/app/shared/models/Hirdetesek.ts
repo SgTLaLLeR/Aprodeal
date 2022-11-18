@@ -1,3 +1,6 @@
+import firebase from "firebase/compat";
+import firestore = firebase.firestore;
+
 export interface Hirdetes{
   id: string;
   nev: string;
@@ -5,7 +8,8 @@ export interface Hirdetes{
   leiras:string;
   elerhetoseg: string;
   imageURL: string;
-  reportedByUserid: string;
+  reportedByUserid: string[] | firestore.FieldValue;
+  reportNumbers: number | firestore.FieldValue;
   userID: string;
 
 

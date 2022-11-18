@@ -2,6 +2,7 @@ export interface User{
   id: string;
   email:string;
   username: string;
+  lastaddvisitedID: string;
   name:{
     firstname:string;
     lastname:string;

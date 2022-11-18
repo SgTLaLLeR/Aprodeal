@@ -38,5 +38,11 @@ export class UserService {
 
 
   }
+  setCurrentAd(addid: string, userid: string){
+    return this.store.collection<User>(this.collectionName).doc(userid).update({
+      lastaddvisitedID: addid,
+    })
+
+  }
 
 }
