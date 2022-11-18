@@ -28,6 +28,7 @@ export class HirdetesfelComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private hirdetesService: HirdetesService, private imgstore: AngularFireStorage,) { }
   basePath='images/';
   downloadableURL='';
+  namesearch: string[]=[];
   task!: AngularFireUploadTask;
 
 
@@ -49,6 +50,14 @@ export class HirdetesfelComponent implements OnInit {
 
   }
   onSubmit(){
+    const name=this.hirdetesfelForm.get('nev')?.value;
+    const splitted=name.split(" ");
+    for(let i=1; i<=splitted.length;i++){
+      for(let j=1;j<=splitted[i].length;j++){
+        this.namesearch.push(splitted[i].substring(0,j).toLowerCase())
+      }
+    }
+    console.log('SPLITTED:', splitted);
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     const urlreg=this.hirdetesfelForm.get('imageURL')?.value.split('fakepath\\');
     //this.router.navigateByUrl('/#');
@@ -60,6 +69,7 @@ export class HirdetesfelComponent implements OnInit {
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
       reportedByUserid: [],
+      namesearchfield:this.namesearch,
       reportNumbers:0,
       userID:user.uid
 

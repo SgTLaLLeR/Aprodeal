@@ -70,6 +70,7 @@ export class HirdeteseimComponent implements OnInit {
       elerhetoseg:this.editAddsForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
       reportedByUserid:[],
+      namesearchfield:[],
       reportNumbers:0,
       userID:user.uid
 

@@ -60,6 +60,9 @@ export class HirdetesService {
       reportNumbers: firestore.FieldValue.increment(1)
     })
   }
+  searchAddByNameSubstr(substr: string){
+    return this.store.collection<Hirdetes>(this.collectionName, ref => ref.where('namesearchfield', 'array-contains', substr.toLowerCase())).valueChanges();
+  }
 
 
 }

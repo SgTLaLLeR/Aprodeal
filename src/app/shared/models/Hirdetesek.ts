@@ -8,6 +8,7 @@ export interface Hirdetes{
   leiras:string;
   elerhetoseg: string;
   imageURL: string;
+  namesearchfield: string[];
   reportedByUserid: string[] | firestore.FieldValue;
   reportNumbers: number | firestore.FieldValue;
   userID: string;
