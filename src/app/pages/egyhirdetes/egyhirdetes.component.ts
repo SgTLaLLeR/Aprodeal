@@ -20,6 +20,22 @@ export class EgyhirdetesComponent implements OnInit {
   constructor(private serv: HirdetesService , private usersev: UserService) { }
 
   ngOnInit(): void {
+    this.kiratas()
+
+  }
+  reportAdd(addid: string, userid:string) {
+    this.serv.alreadyreported(this.user[0].id, addid).subscribe(data=>{
+      console.log('miez: ',data)
+      if(data.length!=0){
+        console.log('true');
+      }else{
+        console.log('false');
+        this.serv.reportedByUser(this.user[0].id, addid);
+        this.serv.incrementNumber(this.hirdetes[0].id);
+      }
+    })
+  }
+  kiratas(){
     const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     this.usersev.getUserById(userdata.uid).subscribe(data =>{
       this.user=data;
@@ -29,32 +45,10 @@ export class EgyhirdetesComponent implements OnInit {
         this.serv.loadImage(this.hirdetes[0].imageURL).subscribe(data=>{
           this.image=data;
         })
-    })
-    })
-    // this.serv.getAddById(this.serv.currentAdd).subscribe(data=>{
-    //   this.hirdetes=data;
-    //   this.serv.loadImage(this.hirdetes[0].imageURL).subscribe(data=>{
-    //     this.image=data;
-    //   })
-    //   this.usersev.getUserById(this.hirdetes[0].userID).subscribe(data=>{
-    //     this.user=data;
-    //     console.log(data)
-    //   })
-    //
-    // })
-
-  }
-  reportAdd(addid: string, userid:string){
-    this.serv.reportedByUser(userid,addid);
-    this.serv.alreadyreported(this.user[0].id,this.hirdetes[0].id).subscribe(data =>{
-      console.log('lenyeg: ', data.length);
-      if(data.length!=0){
-        this.reportFlag=false;
-      }else {
-        this.serv.incrementNumber(this.hirdetes[0].id);
-      }
+      })
     })
 
   }
+
 
 }

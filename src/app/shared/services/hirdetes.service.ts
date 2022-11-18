@@ -51,8 +51,9 @@ export class HirdetesService {
       reportedByUserid: firestore.FieldValue.arrayUnion(userid)
     })
   }
-  alreadyreported(userid: string, id: string){
-    return this.store.collection<Hirdetes>(this.collectionName, ref => ref.where('reportedByUserid', 'array-contains',userid)).valueChanges();
+  alreadyreported(userid: string, addid: string){
+    return this.store.collection<Hirdetes>(this.collectionName, ref => ref.where('reportedByUserid', 'array-contains',userid)
+      .where('id', '==', addid)).valueChanges();
   }
   incrementNumber(id: string){
     return this.store.collection<Hirdetes>(this.collectionName).doc(id.toString()).update({
