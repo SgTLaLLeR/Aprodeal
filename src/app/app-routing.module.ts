@@ -32,6 +32,8 @@ const routes: Routes = [
   { path: 'egyhirdetes', loadChildren: () => import('./pages/egyhirdetes/egyhirdetes.module').then(m => m.EgyhirdetesModule) },
 
   { path: 'search', loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule) },
+
+  { path: 'otherprof', loadChildren: () => import('./pages/otherprof/otherprof.module').then(m => m.OtherprofModule) },
   {
     path:'**',
     redirectTo:'/not-found',

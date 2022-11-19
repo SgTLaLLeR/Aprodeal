@@ -5,10 +5,11 @@
     <p>Ár: {{item.ar}} Ft</p>
     <img  width="250px" height="250px" src="{{image}}">
     <div *ngFor="let user of user">
-      <p>Eladó: {{user.username}}</p>
+      <div *ngFor="let felado of currentUser">
+      <a  routerLink="/otherprof"   (click)="setClickedUser(felado.id)"><p>Eladó: {{felado.username}}</p></a>
       <button *ngIf="reportFlag" mat-raised-button color="accent" (click)="reportAdd(item.id, user.id)" >Hirdetés jelentése</button>
       <button *ngIf="reportFlag==false" mat-raised-button color="accent" >Jelentve.</button>
-
+      </div>
     </div>
 
 

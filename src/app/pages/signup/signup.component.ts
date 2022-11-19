@@ -45,6 +45,9 @@ export class SignupComponent implements OnInit {
         email: this.signUpForm.get('email')?.value,
         username: this.signUpForm.get('username')?.value,
         lastaddvisitedID:'',
+        lastvisitedProf:'',
+        ratedByUsers:[],
+        ratingPoints:0,
         imgURL:'',
         name:{
           firstname: this.signUpForm.get('name.firstname')?.value,

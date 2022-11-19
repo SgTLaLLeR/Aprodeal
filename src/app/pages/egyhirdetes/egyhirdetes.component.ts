@@ -13,6 +13,7 @@ import * as firebase from "firebase/compat";
 export class EgyhirdetesComponent implements OnInit {
   hirdetes: Array<Hirdetes>=[];
   image?: string;
+  //logolt user
   user: Array<User>=[];
   currentUser: Array<User>=[];
   reportFlag: boolean =true;
@@ -21,6 +22,7 @@ export class EgyhirdetesComponent implements OnInit {
 
   ngOnInit(): void {
     this.kiratas()
+
 
   }
   reportAdd(addid: string, userid:string) {
@@ -44,9 +46,18 @@ export class EgyhirdetesComponent implements OnInit {
         this.hirdetes=data;
         this.serv.loadImage(this.hirdetes[0].imageURL).subscribe(data=>{
           this.image=data;
+          this.usersev.getUserById(this.hirdetes[0].userID).subscribe(data =>{
+            this.currentUser=data;
+          });
         })
       })
     })
+
+  }
+  setClickedUser(id: string){
+    const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+    this.usersev.setLastVisitedUser(id,userdata.uid);
+
 
   }
 

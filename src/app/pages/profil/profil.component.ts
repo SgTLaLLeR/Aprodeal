@@ -90,6 +90,9 @@ export class ProfilComponent implements OnInit, OnChanges {
       email: this.editUserForm.get('email')?.value,
       username: this.editUserForm.get('username')?.value,
       lastaddvisitedID:'',
+      lastvisitedProf:'',
+      ratingPoints:0,
+      ratedByUsers:[],
       imgURL:'profile/'+urlreg[1],
       name:{
         firstname: this.editUserForm.get('name.firstname')?.value,
