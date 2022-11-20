@@ -1,0 +1,7 @@
+<p>otherprof works!</p>
+<div class="main" *ngFor="let item of CurrentUser">
+  <p>{{item.username}}</p>
+  <img src="{{image}}" width="150" height="150" >
+  <button mat-raised-button color="accent" (click)="rateUser(item.id)">Felhasználó pontozása</button>
+
+</div>

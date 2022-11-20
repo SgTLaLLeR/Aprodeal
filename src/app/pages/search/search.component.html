@@ -1,0 +1,23 @@
+<div class="main_component">
+
+<!--  <mat-form-field color="accent"><mat-label><input matInput>Keresés</mat-label></mat-form-field>-->
+  <div class="searchbar">
+  <mat-form-field color="accent">
+    <mat-label>Keresés..</mat-label>
+    <input matInput [(ngModel)]="searchTerm" />
+
+  </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" (click)="search()"><mat-icon matPrefix>search</mat-icon></button>
+  </div>
+  <div *ngIf="flag">
+    <h1 align="center">Keresés eredmények:</h1>
+    <div *ngIf="hirdetesek!=null">
+    <div *ngFor="let items of hirdetesek">
+      <p>{{items.nev}}</p>
+      <p>Ár: {{items.ar}} Ft</p>
+      <img  width="250px" height="250px" src="{{items.imageURL}}">
+      <button mat-raised-button color="accent" (click)="setCurrentAdd(items.id)" routerLink="/egyhirdetes">Részletek</button>
+    </div>
+    </div>
+  </div>
+</div>
