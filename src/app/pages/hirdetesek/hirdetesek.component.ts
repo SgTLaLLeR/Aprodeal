@@ -4,6 +4,7 @@ import {HirdetesService} from "../../shared/services/hirdetes.service";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {UserService} from "../../shared/services/user.service";
 import * as firebase from "firebase/compat";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-hirdetesek',
@@ -12,7 +13,7 @@ import * as firebase from "firebase/compat";
 })
 export class HirdetesekComponent implements OnInit {
 
-  constructor(private  serv: HirdetesService, private storage: AngularFireStorage, private userserv: UserService) { }
+  constructor(private  serv: HirdetesService, private storage: AngularFireStorage, private userserv: UserService,private  router: Router) { }
   hirdetesek: Array<Hirdetes>=[];
 
 
@@ -39,6 +40,7 @@ export class HirdetesekComponent implements OnInit {
   setCurrentAdd(id: string){
     this.serv.currentAdd=id;
     const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+
     this.userserv.setCurrentAd(id,userdata.uid);
   }
 

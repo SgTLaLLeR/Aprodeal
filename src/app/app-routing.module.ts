@@ -21,7 +21,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
 
-  { path: 'profil', loadChildren: () => import('./pages/profil/profil.module').then(m => m.ProfilModule) },
+  { path: 'profil', loadChildren: () => import('./pages/profil/profil.module').then(m => m.ProfilModule), canActivate:[AuthGuard] },
 
   { path: 'hirdetesfel', loadChildren: () => import('./pages/hirdetesfel/hirdetesfel.module').then(m => m.HirdetesfelModule), canActivate:[AuthGuard] },
 
@@ -29,11 +29,11 @@ const routes: Routes = [
 
   { path: 'hirdeteseim', loadChildren: () => import('./pages/hirdeteseim/hirdeteseim.module').then(m => m.HirdeteseimModule) },
 
-  { path: 'egyhirdetes', loadChildren: () => import('./pages/egyhirdetes/egyhirdetes.module').then(m => m.EgyhirdetesModule) },
+  { path: 'egyhirdetes', loadChildren: () => import('./pages/egyhirdetes/egyhirdetes.module').then(m => m.EgyhirdetesModule), canActivate:[AuthGuard] },
 
   { path: 'search', loadChildren: () => import('./pages/search/search.module').then(m => m.SearchModule) },
 
-  { path: 'otherprof', loadChildren: () => import('./pages/otherprof/otherprof.module').then(m => m.OtherprofModule) },
+  { path: 'otherprof', loadChildren: () => import('./pages/otherprof/otherprof.module').then(m => m.OtherprofModule),canActivate:[AuthGuard] },
   {
     path:'**',
     redirectTo:'/not-found',
