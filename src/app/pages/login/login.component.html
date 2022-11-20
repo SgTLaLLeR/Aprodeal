@@ -12,6 +12,14 @@
   </span>
 
   </div>
+  <span (click)="setForgotFlag()">Eljelejtett jelszó</span>
+  <div *ngIf="ForgotFlag"><mat-form-field color="accent">
+    <mat-label>Email cím</mat-label>
+    <input matInput [(ngModel)]="emailForgot" />
+    <button mat-raised-button color="accent" type="submit" (click)="desetForgotFlag()">Küldés</button>
+
+  </mat-form-field>
+  </div>
   <span style="color:red" *ngIf="flag">A bejelentkezés nem sikerült</span>
 
 </div>

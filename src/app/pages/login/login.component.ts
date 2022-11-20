@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   password=new FormControl('')
   flag : boolean=false;
   loading: boolean=false;
+  emailForgot: string='';
+  ForgotFlag: boolean=false;
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -31,17 +33,33 @@ export class LoginComponent implements OnInit {
     }*/
     this.authService.login(this.email.value,this.password.value).then(cred=>{
       console.log(cred);
+      if(cred.user?.emailVerified == true){
+        this.router.navigateByUrl('/fooldal');
+      }else{
+        alert('Hitelesítsd az email címed');
+      }
 
 
 
 
-      this.router.navigateByUrl('/fooldal');
+
     }).catch(error=>{
       console.error(error);
       alert("Nem sikerült a bejelntkezés!");
       this.flag=true;
 
     });
+
+  }
+
+  desetForgotFlag(){
+    this.ForgotFlag=false;
+    this.authService.forgotPassword(this.emailForgot);
+    this.emailForgot='';
+  }
+  setForgotFlag(){
+    this.ForgotFlag=true;
+
 
   }
 

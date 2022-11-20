@@ -52,6 +52,17 @@ export class AuthService {
 
 
   }
+  forgotPassword(email: string){
+    this.auth.sendPasswordResetEmail(email).then(()=>{
+
+    }, err =>{
+      alert('Error');
+    })
+  }
+  sendEmail(user: any) {
+    user.sendEmailVerification();
+  }
+
 
 
 

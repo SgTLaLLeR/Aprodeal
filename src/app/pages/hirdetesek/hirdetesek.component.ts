@@ -5,6 +5,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {UserService} from "../../shared/services/user.service";
 import * as firebase from "firebase/compat";
 import {Router} from "@angular/router";
+import {user} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-hirdetesek',
@@ -40,6 +41,9 @@ export class HirdetesekComponent implements OnInit {
   setCurrentAdd(id: string){
     this.serv.currentAdd=id;
     const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+    if(userdata ===null){
+      alert('Jelentkezz be a hírdetés megtekintéséhez');
+    }
 
     this.userserv.setCurrentAd(id,userdata.uid);
   }

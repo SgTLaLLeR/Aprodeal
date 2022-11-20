@@ -26,6 +26,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
+        FormsModule,
         MatProgressSpinnerModule,
     ]
 })

@@ -38,6 +38,7 @@ export class SignupComponent implements OnInit {
   onSubmit(){
     console.log(this.signUpForm.value);
     this.authService.signup(this.signUpForm.get('email')?.value,this.signUpForm.get('password')?.value).then(cred=>{
+      this.authService.sendEmail(cred.user);
       console.log(cred);
       this.router.navigateByUrl('/login');
       const user: User={
