@@ -24,6 +24,7 @@ export class EgyhirdetesComponent implements OnInit {
     this.kiratas()
 
 
+
   }
   reportAdd(addid: string, userid:string) {
     this.serv.alreadyreported(this.user[0].id, addid).subscribe(data=>{
@@ -44,14 +45,19 @@ export class EgyhirdetesComponent implements OnInit {
       console.log('CurrUser: ', data)
       this.serv.getAddById(this.user[0].lastaddvisitedID).subscribe(data =>{
         this.hirdetes=data;
+      })
+
         this.serv.loadImage(this.hirdetes[0].imageURL).subscribe(data=>{
           this.image=data;
+        })
           this.usersev.getUserById(this.hirdetes[0].userID).subscribe(data =>{
             this.currentUser=data;
           });
-        })
-      })
+
+
+      this.serv.visitCounter(this.hirdetes[0].id);
     })
+
 
   }
   setClickedUser(id: string){

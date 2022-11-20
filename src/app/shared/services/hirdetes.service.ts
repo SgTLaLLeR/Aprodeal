@@ -63,6 +63,11 @@ export class HirdetesService {
   searchAddByNameSubstr(substr: string){
     return this.store.collection<Hirdetes>(this.collectionName, ref => ref.where('namesearchfield', 'array-contains', substr.toLowerCase())).valueChanges();
   }
+  visitCounter(id: string){
+    return this.store.collection<Hirdetes>(this.collectionName).doc(id).update({
+      visitedNumber: firestore.FieldValue.increment(1)
+    })
+  }
 
 
 }

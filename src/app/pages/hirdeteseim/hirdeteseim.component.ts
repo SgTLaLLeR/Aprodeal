@@ -71,6 +71,7 @@ export class HirdeteseimComponent implements OnInit {
       imageURL:'images/'+urlreg[1],
       reportedByUserid:[],
       namesearchfield:[],
+      visitedNumber:0,
       reportNumbers:0,
       userID:user.uid
 

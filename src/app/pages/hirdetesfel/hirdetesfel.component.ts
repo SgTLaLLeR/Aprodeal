@@ -72,6 +72,7 @@ export class HirdetesfelComponent implements OnInit {
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
       reportedByUserid: [],
+      visitedNumber:0,
       namesearchfield:this.namesearch,
       reportNumbers:0,
       userID:user.uid
