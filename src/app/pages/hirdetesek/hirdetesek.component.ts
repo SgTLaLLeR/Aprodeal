@@ -42,7 +42,7 @@ export class HirdetesekComponent implements OnInit {
     this.serv.currentAdd=id;
     const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     if(userdata ===null){
-      alert('Jelentkezz be a hírdetés megtekintéséhez');
+      alert('Jelentkezz be a hírdetés megtekintéséhe!');
     }
 
     this.userserv.setCurrentAd(id,userdata.uid);
