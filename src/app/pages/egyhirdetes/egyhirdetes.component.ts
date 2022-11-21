@@ -22,6 +22,7 @@ export class EgyhirdetesComponent implements OnInit {
 
   ngOnInit(): void {
     this.kiratas()
+    this.serv.visitCounter(this.serv.currentAdd);
 
 
 
@@ -45,17 +46,17 @@ export class EgyhirdetesComponent implements OnInit {
       console.log('CurrUser: ', data)
       this.serv.getAddById(this.user[0].lastaddvisitedID).subscribe(data =>{
         this.hirdetes=data;
-      })
+
 
         this.serv.loadImage(this.hirdetes[0].imageURL).subscribe(data=>{
           this.image=data;
-        })
+
           this.usersev.getUserById(this.hirdetes[0].userID).subscribe(data =>{
             this.currentUser=data;
           });
 
-
-      this.serv.visitCounter(this.hirdetes[0].id);
+        })
+      })
     })
 
 

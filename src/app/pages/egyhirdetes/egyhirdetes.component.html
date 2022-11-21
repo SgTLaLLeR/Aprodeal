@@ -1,36 +1,43 @@
-<div class="wrapper">
-  <div class="tile" *ngFor="let item of hirdetes">
+<!--<div class="wrapper">-->
+<!--  <div class="tile" *ngFor="let item of hirdetes">-->
 
-    <p>Név: {{item.nev}}</p>
-    <p>Ár: {{item.ar}} Ft</p>
-    <img  width="250px" height="250px" src="{{image}}">
-    <div *ngFor="let user of user">
-      <div *ngFor="let felado of currentUser">
-      <a  routerLink="/otherprof"   (click)="setClickedUser(felado.id)"><p>Eladó: {{felado.username}}</p></a>
-      <button *ngIf="reportFlag" mat-raised-button color="accent" (click)="reportAdd(item.id, user.id)" >Hirdetés jelentése</button>
-      <button *ngIf="reportFlag==false" mat-raised-button color="accent" >Jelentve.</button>
-      </div>
-    </div>
+<!--    <p>Név: {{item.nev}}</p>-->
+<!--    <p>Ár: {{item.ar}} Ft</p>-->
+<!--    <img  width="250px" height="250px" src="{{image}}">-->
+<!--    <div *ngFor="let user of user">-->
+<!--      <div *ngFor="let felado of currentUser">-->
+<!--      <a  routerLink="/otherprof"   (click)="setClickedUser(felado.id)"><p>Eladó: {{felado.username}}</p></a>-->
+<!--      <button *ngIf="reportFlag" mat-raised-button color="accent" (click)="reportAdd(item.id, user.id)" >Hirdetés jelentése</button>-->
+<!--      <button *ngIf="reportFlag==false" mat-raised-button color="accent" >Jelentve.</button>-->
+<!--      </div>-->
+<!--    </div>-->
 
 
 
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
 <!-- This is an example component -->
+<br>
+<div class="main">
 <div class="max-w-lg mx-auto"  *ngFor="let item of hirdetes">
-  <div class="bg-whitegrey shadow-md border border-gray-200 rounded-lg max-w-sm mb-5" *ngFor="let felado of currentUser">
+  <div class="bg-whitegrey shadow-md border border-gray-200 rounded-lg max-w-md mb-5" *ngFor="let felado of currentUser">
     <a href="#">
       <img class="rounded-t-lg" src="{{image}}" alt="">
     </a>
     <div class="p-5">
-      <a href="#">
-        <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2">{{item.ar}} Ft</h5>
+
+        <p class="font-normal text-gray-700 mb-3">{{item.ar}} Ft</p>
+
+      <p class="text-xl text-black-700 font-bold mb-2">{{item.nev}}</p>
+      <h1>Leírás: </h1>
+      <p class="font-normal text-gray-700 mb-3">{{item.leiras}}</p>
+      <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" routerLink="/otherprof"   (click)="setClickedUser(felado.id)">
+        Eladó: {{felado.username}}
       </a>
-      <p class="font-normal text-gray-700 mb-3">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-      <a class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center" href="#">
-        Read more
-      </a>
+
     </div>
   </div>
-  <p>This card component is part of a larger, open-source library of Tailwind CSS components. Learn more by going to the official <a class="text-blue-600 hover:underline" href="#" target="_blank">Flowbite Documentation</a>.</p>
+  <button mat-raised-button color="accent">Hirdetés jelentése</button>
+
+</div>
 </div>
