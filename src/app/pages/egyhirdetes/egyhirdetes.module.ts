@@ -5,6 +5,7 @@ import { EgyhirdetesRoutingModule } from './egyhirdetes-routing.module';
 import { EgyhirdetesComponent } from './egyhirdetes.component';
 import {MatButtonModule} from "@angular/material/button";
 import {CdkTableModule} from "@angular/cdk/table";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {CdkTableModule} from "@angular/cdk/table";
         CommonModule,
         EgyhirdetesRoutingModule,
         MatButtonModule,
-        CdkTableModule
+        CdkTableModule,
+        MatIconModule
     ]
 })
 export class EgyhirdetesModule { }
