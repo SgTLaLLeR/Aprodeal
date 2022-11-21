@@ -25,8 +25,10 @@
       <img class="rounded-t-lg" src="{{image}}" alt="">
     </a>
     <div class="p-5">
-        <p class="inline-icon material-icons">{{item.visitedNumber}}</p><mat-icon>visibility</mat-icon>
-        <p class="font-normal text-gray-700 mb-3">{{item.ar}} HUF</p>
+      <div class="flow-root">
+        <p class="float-left text-xl text-black-700 font-bold mb-2">{{item.ar}} Ft</p>
+        <p class="float-right text-xl text-black-700 font-bold mb-2">{{item.visitedNumber}} <mat-icon>visibility</mat-icon></p>
+      </div>
 
       <p class="text-xl text-black-700 font-bold mb-2">{{item.nev}}</p>
       <h1>Leírás: </h1>
@@ -37,7 +39,7 @@
 
     </div>
   </div>
-  <button mat-raised-button color="accent">Hirdetés jelentése</button>
+  <button mat-raised-button color="accent" class="gomb">Hirdetés jelentése</button>
 
 </div>
 </div>
