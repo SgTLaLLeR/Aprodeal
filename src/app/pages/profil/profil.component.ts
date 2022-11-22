@@ -25,6 +25,10 @@ export class ProfilComponent implements OnInit, OnChanges {
   downloadableURL='';
   task!: AngularFireUploadTask;
   image?: string;
+  nevmodel: string='';
+  mailmode: string='';
+  keresztmodel:string='';
+  vezetekmodel:string='';
 
   users: Array<User>=[];
   editUserForm=new FormGroup({
@@ -51,6 +55,10 @@ export class ProfilComponent implements OnInit, OnChanges {
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     this.userserv.getUserById(user.uid).subscribe(userz=>{
       this.users=userz;
+      this.nevmodel=userz[0].username;
+      this.mailmode=userz[0].email;
+      this.keresztmodel=userz[0].name.lastname;
+      this.vezetekmodel=userz[0].name.firstname;
       this.userserv.loadProfileImage(this.users[0].imgURL).subscribe(data=>{
         this.image=data;
       })

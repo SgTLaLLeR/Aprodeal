@@ -1,7 +1,30 @@
-<p>otherprof works!</p>
-<div class="main" *ngFor="let item of CurrentUser">
-  <p>{{item.username}}</p>
-  <img src="{{image}}" width="150" height="150" >
-  <button mat-raised-button color="accent" (click)="rateUser(item.id)">Felhasználó pontozása</button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<br>
+<div class="main_component">
+<div class="max-w-lg mx-auto">
+
+  <div class="bg-whitegrey shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700" *ngFor="let item of CurrentUser">
+    <a href="#">
+      <img class="rounded-t-lg" src="{{image}}" alt="profilkep">
+    </a>
+    <div class="p-5">
+      <h1><p class="font-normal text-gray-700 mb-3 dark:text-gray-400">{{item.username}}</p></h1>
+
+      <p>Futó hirdetések: {{addsNumber}} db</p>
+      <p>Felhasználó értékelése: {{+rating/ratingDivide.length}} ({{ratingDivide.length}})</p>
+      <p>Emailcím: {{item.email}}</p>
+
+    </div>
+    <form [formGroup]="form" (ngSubmit)="rateUser(item.id)">
+      <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
+      <div>Értékelés: {{form.value.rating}}</div>
+      <button mat-raised-button color="accent"  type="submit">Felhasználó pontozása</button>
+    </form>
+
+  </div>
 
 </div>
+</div>
+<br>
+<br>

@@ -31,11 +31,11 @@ export class EgyhirdetesComponent implements OnInit {
     this.serv.alreadyreported(this.user[0].id, addid).subscribe(data=>{
       console.log('miez: ',data)
       if(data.length!=0){
-        console.log('true');
       }else{
         console.log('false');
         this.serv.reportedByUser(this.user[0].id, addid);
         this.serv.incrementNumber(this.hirdetes[0].id);
+        alert('Hirdetés jelentve.')
       }
     })
   }
