@@ -16,13 +16,21 @@
       <p>Emailcím : {{item.email}}</p>
 
     </div>
+
     <form [formGroup]="form" (ngSubmit)="rateUser(item.id)">
       <ngx-star-rating formControlName="rating" [id]="'rating'"></ngx-star-rating>
-      <div>Értékelés: {{form.value.rating}}</div>
-      <button mat-raised-button color="accent"  type="submit">Felhasználó pontozása</button>
+      <div class="p-5">Értékelés: {{form.value.rating}}
+        <br>
+      </div>
+      <div class="p-5 mx-auto">
+      <button mat-raised-button color="accent"   type="submit">Felhasználó pontozása</button>
+      </div>
     </form>
+    <br>
+
 
   </div>
+
 
 </div>
 </div>
