@@ -34,14 +34,14 @@ export class OtherprofComponent implements OnInit {
         this.CurrentUser=data;
         this.rating=data[0].ratingPoints;
         this.ratingDivide=data[0].ratedByUsers
-
-
-        this.addserv.getAddByUserId(this.CurrentUser[0].id).subscribe(data =>{
-          this.addsNumber=data.length;
-        })
+        this.dividedRating=this.rating/this.ratingDivide.length;
         this.serv.loadProfileImage(this.CurrentUser[0].imgURL).subscribe(data =>{
           this.image=data;
+
         })
+        // this.addserv.getAddByUserId(this.CurrentUser[0].id).subscribe(data =>{
+        //   this.addsNumber=data.length;
+        // })
       })
 
 

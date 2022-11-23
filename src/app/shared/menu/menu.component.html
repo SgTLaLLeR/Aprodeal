@@ -8,14 +8,39 @@
     <span>Login</span>
 
   </a>
+
+
+  <a mat-list-item  routerLink="/fooldal" (click)="close()"><mat-icon>grid_view</mat-icon>
+    <span>Főoldal</span>
+
+  </a>
+  <a mat-list-item  routerLink="/profil" (click)="close()"><mat-icon>account_circle</mat-icon>
+    <span>Profil</span>
+
+  </a>
+
+  <a mat-list-item  routerLink="/hirdetesek" (click)="close()"><mat-icon>label</mat-icon>
+    <span>Hirdetések</span>
+
+  </a>
+  <a mat-list-item  routerLink="/search" (click)="close()"><mat-icon>search</mat-icon>
+    <span>Keresés</span>
+
+  </a>
+
+
+  <a mat-list-item  routerLink="/hirdetesfel" (click)="close()"><mat-icon>sell</mat-icon>
+    <span>Hirdetés feladása</span>
+
+  </a>
   <a mat-list-item  routerLink="/login" (click)="close(true)" *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon>
-    <span>Logout</span>
+    <span>Kijelentkezés</span>
 
   </a>
-  <a mat-list-item  routerLink="/main" (click)="close()"><mat-icon>grid_view</mat-icon>
-    <span>Main</span>
 
-  </a>
+
+
+
 
 </mat-nav-list>
 

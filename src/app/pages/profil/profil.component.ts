@@ -10,6 +10,7 @@ import {FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import * as firebase from 'firebase/compat';
 import {Router} from "@angular/router";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
+import {HirdetesService} from "../../shared/services/hirdetes.service";
 
 
 
@@ -29,6 +30,10 @@ export class ProfilComponent implements OnInit, OnChanges {
   mailmode: string='';
   keresztmodel:string='';
   vezetekmodel:string='';
+  rating: any =0;
+  ratingDivide: any=0;
+  dividedRating: number=0;
+  addsNumber: number =0;
 
   users: Array<User>=[];
   editUserForm=new FormGroup({
@@ -45,7 +50,7 @@ export class ProfilComponent implements OnInit, OnChanges {
 
 
   constructor(private authService:AuthService, private afs: AngularFirestore, private userserv: UserService,
-              private auth: AngularFireAuth, private router : Router, private  imgstore:AngularFireStorage
+              private auth: AngularFireAuth, private router : Router, private  imgstore:AngularFireStorage, private addserv: HirdetesService
   ) { }
 
 
@@ -59,6 +64,12 @@ export class ProfilComponent implements OnInit, OnChanges {
       this.mailmode=userz[0].email;
       this.keresztmodel=userz[0].name.lastname;
       this.vezetekmodel=userz[0].name.firstname;
+      this.rating=userz[0].ratingPoints;
+      this.ratingDivide=userz[0].ratedByUsers
+      this.dividedRating=this.rating/this.ratingDivide.length;
+      this.addserv.getAddByUserId(this.users[0].id).subscribe(data =>{
+        this.addsNumber=data.length;
+      })
       this.userserv.loadProfileImage(this.users[0].imgURL).subscribe(data=>{
         this.image=data;
       })

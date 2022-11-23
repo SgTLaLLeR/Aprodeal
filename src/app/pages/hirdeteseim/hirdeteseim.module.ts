@@ -8,21 +8,23 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     HirdeteseimComponent
   ],
-  imports: [
-    CommonModule,
-    HirdeteseimRoutingModule,
-    MatTableModule,
-    MatIconModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule
-  ]
+    imports: [
+        CommonModule,
+        HirdeteseimRoutingModule,
+        MatTableModule,
+        MatIconModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule
+    ]
 })
 export class HirdeteseimModule { }

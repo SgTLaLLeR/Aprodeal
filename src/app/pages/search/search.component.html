@@ -9,15 +9,32 @@
   </mat-form-field>
     <button mat-raised-button color="accent" type="submit" (click)="search()"><mat-icon matPrefix>search</mat-icon></button>
   </div>
-  <div *ngIf="flag">
-    <h1 align="center">Keresés eredmények:</h1>
-    <div *ngIf="hirdetesek!=null">
-    <div *ngFor="let items of hirdetesek">
-      <p>{{items.nev}}</p>
-      <p>Ár: {{items.ar}} Ft</p>
-      <img  width="250px" height="250px" src="{{items.imageURL}}">
-      <button mat-raised-button color="accent" (click)="setCurrentAdd(items.id)" routerLink="/egyhirdetes">Részletek</button>
+<!--  <div *ngIf="flag">-->
+<!--    <h1 align="center">Keresés eredmények:</h1>-->
+<!--    <div *ngIf="hirdetesek!=null">-->
+<!--    <div *ngFor="let items of hirdetesek">-->
+<!--      <p>{{items.nev}}</p>-->
+<!--      <p>Ár: {{items.ar}} Ft</p>-->
+<!--      <img  width="250px" height="250px" src="{{items.imageURL}}">-->
+<!--      <button mat-raised-button color="accent" (click)="setCurrentAdd(items.id)" routerLink="/egyhirdetes">Részletek</button>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12" *ngIf="flag">
+    <div><h1>Aktuális hírdetések</h1></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="w-full bg-whitegrey rounded-lg p-12 flex flex-col justify-center items-center" *ngFor="let items of hirdetesek">
+        <div class="mb-8">
+          <img class="object-center rounded-md object-contain  h-40 w-40" src="{{items.imageURL}}">
+        </div>
+        <div class="text-center" >
+          <p class="text-xl text-black-700 font-bold mb-2">{{items.nev}}</p>
+          <p class="text-base text-black-400 font-normal">{{items.ar}} Ft</p>
+          <button mat-raised-button color="accent" (click)="setCurrentAdd(items.id)" routerLink="/egyhirdetes">Részletek</button>
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
+
+  </section>
 </div>
+

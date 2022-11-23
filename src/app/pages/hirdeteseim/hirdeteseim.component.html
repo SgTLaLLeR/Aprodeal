@@ -1,36 +1,56 @@
 
 <div class="main">
-  <h1 align="center">Aktuális Hírdetéseid</h1>
+  <h1 *ngIf="flag" align="center">Aktuális Hírdetéseid</h1>
+  <h1 *ngIf="flag==false" align="center">Hirdetés szerkesztése</h1>
   <br>
   <br>
-<div *ngFor="let item of hirdetesek">
-  <table align="center" *ngIf="flag" >
-    <tr>
-    <th>Név:</th>
-    <th>Ár:</th>
-    <th>Leírás:</th>
-    <th>Kép:</th>
-    <th>Módosítás:</th>
-    <th>Törlés:</th>
-    </tr>
-    <tbody>
-    <tr >
-      <td>{{item.nev}}</td>
-      <td>{{item.ar}}</td>
-      <td>{{item.leiras}}</td>
-      <td><img  width="100px" height="100px" src="{{item.imageURL}}"></td>
-      <td align="center"><mat-icon color="accent" (click)="desetFlag()"  (click)="currentId(item.id)">edit</mat-icon></td>
+  <h1 *ngIf="ures" align="center">Nincs futó hírdetésed!</h1>
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12" *ngIf="flag">
+    <div><h1>Aktuális hírdetések</h1></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="w-full bg-whitegrey rounded-lg p-12 flex flex-col justify-center items-center" *ngFor="let items of hirdetesek">
+        <div class="mb-8">
+          <img class="object-center rounded-md object-contain  h-40 w-40" src="{{items.imageURL}}">
+        </div>
+        <div class="text-center" >
+          <p class="text-xl text-black-700 font-bold mb-2">{{items.nev}}</p>
+          <p class="text-base text-black-400 font-normal">{{items.ar}} Ft</p>
+          <mat-icon color="accent" (click)="desetFlag()"  (click)="currentId(items.id)">edit</mat-icon>
+          <mat-icon color="accent" (click)="deleteAdd(items.id)">delete</mat-icon>
+        </div>
+      </div>
+    </div>
 
-      <td align="center"><mat-icon color="accent" (click)="deleteAdd(item.id)">delete</mat-icon></td>
+  </section>
+<!--<div *ngFor="let item of hirdetesek">-->
+
+<!--  <table align="center" *ngIf="flag" >-->
+<!--    <tr>-->
+<!--    <th>Név:</th>-->
+<!--    <th>Ár:</th>-->
+<!--    <th>Leírás:</th>-->
+<!--    <th>Kép:</th>-->
+<!--    <th>Módosítás:</th>-->
+<!--    <th>Törlés:</th>-->
+<!--    </tr>-->
+<!--    <tbody>-->
+<!--    <tr >-->
+<!--      <td>{{item.nev}}</td>-->
+<!--      <td>{{item.ar}}</td>-->
+<!--      <td>{{item.leiras}}</td>-->
+<!--      <td><img  width="100px" height="100px" src="{{item.imageURL}}"></td>-->
+<!--      <td align="center"><mat-icon color="accent" (click)="desetFlag()"  (click)="currentId(item.id)">edit</mat-icon></td>-->
+
+<!--      <td align="center"><mat-icon color="accent" (click)="deleteAdd(item.id)">delete</mat-icon></td>-->
 
 
-    </tr>
+<!--    </tr>-->
 
-    </tbody>
-  </table>
-  <br>
+<!--    </tbody>-->
+<!--  </table>-->
+<!--  <br>-->
 
-</div>
+<!--</div>-->
   <div *ngIf="flag==false" class="form">
     <form [formGroup]="editAddsForm" (ngSubmit)="onSubmit()">
       <div><mat-form-field color="accent"><mat-label id="nev">Hirdetés neve:</mat-label><input matInput type="text" formControlName="nev" required/></mat-form-field></div>
@@ -39,8 +59,8 @@
       <div> <mat-form-field color="accent"><mat-label  id="elerhetoseg">Elérhetőség:</mat-label><input matInput type="text" formControlName="elerhetoseg" required/></mat-form-field></div>
       <h1>Fénykép feltöltése:</h1>
       <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imageURL"></div>
-
-      <button mat-raised-button color="accent"  type="submit"   >Módosít</button>
+      <br>
+      <button mat-raised-button color="accent"  type="submit">Módosít</button>
     </form>
   </div>
 </div>

@@ -23,6 +23,7 @@ export class HirdeteseimComponent implements OnInit {
   downloadableURL='';
   task!: AngularFireUploadTask;
   currentImage?: string;
+  ures: boolean=false;
 
   editAddsForm=new FormGroup({
     nev: new FormControl(''),
@@ -37,6 +38,10 @@ export class HirdeteseimComponent implements OnInit {
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     this.serv.getAddByUserId(user.uid).subscribe(adds=>{
       this.hirdetesek=adds;
+      if(this.hirdetesek.length==0){
+        this.ures=true;
+        console.log('mija',this.ures);
+      }
       for(let i=0;i<this.hirdetesek.length;i++){
         this.serv.loadImage(this.hirdetesek[i].imageURL).subscribe(data=>{
           this.image=data;

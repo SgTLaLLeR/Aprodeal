@@ -12,8 +12,8 @@ div {
   font-size: 26px;
 }
 .box{
-  width: 50%;
-  height: 50%;
+  //width: 50%;
+  //height: 50%;
   align-items: center;
   font-size: 26px;
   background-color: grey;
@@ -22,7 +22,7 @@ div {
 }
 
 mat-form-field{
-  width: 50%;
+  width: 100%;
 
 }
 mat-label{
