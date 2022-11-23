@@ -24,6 +24,10 @@ export class HirdeteseimComponent implements OnInit {
   task!: AngularFireUploadTask;
   currentImage?: string;
   ures: boolean=false;
+  nevmodel='';
+  armodel='';
+  leirasmodel='';
+  elerhetosegmodel='';
 
   editAddsForm=new FormGroup({
     nev: new FormControl(''),
@@ -66,6 +70,7 @@ export class HirdeteseimComponent implements OnInit {
   }
   onSubmit(){
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+
     const urlreg=this.editAddsForm.get('imageURL')?.value.split('fakepath\\');
     const hirdetes: Hirdetes={
       id:this.current_row_id!,
@@ -100,6 +105,12 @@ export class HirdeteseimComponent implements OnInit {
   }
   currentId(id: string){
     this.current_row_id=id;
+    this.serv.getAddById(this.current_row_id).subscribe(data =>{
+      this.nevmodel=data[0].nev;
+      this.armodel=data[0].ar;
+      this.leirasmodel=data[0].leiras;
+      this.elerhetosegmodel=data[0].elerhetoseg;
+    })
   }
   async onFileChanged(event:any) {
     const file = event.target.files[0];
