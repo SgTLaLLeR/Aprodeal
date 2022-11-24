@@ -39,6 +39,9 @@ export class OtherprofComponent implements OnInit {
           this.image=data;
 
         })
+        this.addserv.getAddByUserId(this.CurrentUser[0].id).subscribe(data =>{
+          this.addsNumber=data.length;
+        })
         // this.addserv.getAddByUserId(this.CurrentUser[0].id).subscribe(data =>{
         //   this.addsNumber=data.length;
         // })

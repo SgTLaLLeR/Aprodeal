@@ -85,8 +85,11 @@ export class HirdetesfelComponent implements OnInit {
     this.imgstore.ref('/images').put(hirdetes.imageURL);
     this.hirdetesService.create(hirdetes).then(_=>{
       console.log('Siekeres beszuras');
+      alert('Sikeresen feladtad a hirdetést!');
+      this.router.navigateByUrl('./hirdetesiem');
     }).catch(error=>{
       console.error(error);
+      alert('Valami nem sikerült!');
     })
 
   }
