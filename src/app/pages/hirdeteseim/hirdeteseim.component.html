@@ -11,6 +11,8 @@
       <div class="w-full bg-whitegrey rounded-lg p-12 flex flex-col justify-center items-center" *ngFor="let items of hirdetesek">
         <div class="mb-8">
           <img class="object-center rounded-md object-contain  h-40 w-40" src="{{items.imageURL}}">
+          <img *ngIf="items.imageURL==null" alt="hirdetésképe" src="assets/default.png" class="object-center rounded-md object-contain">
+
         </div>
         <div class="text-center" >
           <p class="text-xl text-black-700 font-bold mb-2">{{items.nev}}</p>
@@ -58,7 +60,7 @@
       <div> <mat-form-field color="accent"><mat-label  id="leiras">Leirás:</mat-label><input matInput type="text" formControlName="leiras" [(ngModel)]="leirasmodel" required/></mat-form-field></div>
       <div> <mat-form-field color="accent"><mat-label  id="elerhetoseg">Elérhetőség:</mat-label><input matInput type="text" formControlName="elerhetoseg" [(ngModel)]="elerhetosegmodel" required/></mat-form-field></div>
       <h1>Fénykép feltöltése:</h1>
-      <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imageURL"></div>
+      <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imageURL" [(ngModel)]="imageModel"></div>
       <br>
       <button mat-raised-button color="accent"  type="submit">Módosít</button>
     </form>

@@ -8,11 +8,11 @@
         <div class="flex flex-wrap justify-center">
           <div class="w-full px-4 flex justify-center">
             <div class="relative">
-              <img *ngIf="image" alt="Profil kép" src="{{image}}" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+              <img *ngIf="image" alt="Profil kép" src="{{image}}" class="shadow-xl rounded-full max-h-44 align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
               <img *ngIf="image==null" alt="Profil kép" src="assets/default.png" class="rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
             </div>
           </div>
-          <br>
+
           <div class="w-full px-4 text-center mt-20">
             <div class="flex justify-center py-4 lg:pt-4 pt-8">
               <div class="mr-4 p-3 text-center">
@@ -40,7 +40,7 @@
             <p class="text-2xl font-bold">{{item.name.lastname}} {{item.name.firstname}}</p>
 
 
-          <div class="leading-normal mt-0 mb-2 text-white-400 font-bold uppercase">
+          <div class="leading-normal mt-0 mb-2 text-white-400 font-bold">
             <p class="text-lg, font-semibold">Emailcím:</p>
             <p class="text-2xl font-bold">{{item.email}}</p>
 
@@ -104,52 +104,6 @@
 </div>
 
 
-
-<!--<div class="main">-->
-<!--  <span class="cim" style="color: black" position="absolute">Profil</span>-->
-<!--  <button mat-raised-button routerLink="/hirdeteseim">Hirdetéseim</button>-->
-
-<!--  <div class="belso" *ngFor="let item of users">-->
-<!--    <div >-->
-<!--      <h1>Profil adatok <button mat-raised-button color="accent"><mat-icon *ngIf="flag==false" (click)="setFlag()">edit</mat-icon><mat-icon *ngIf="flag" (click)="desetFlag()">close</mat-icon></button></h1>-->
-<!--      <div class="profileimg" align="center"><img width="150" height="150" src="{{image}}" /></div>-->
-<!--      <form *ngIf="flag" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">-->
-<!--        <h1>Profile kép feltöltése:</h1>-->
-<!--        <div><input (input)="onFileChanged($event)" type="file" name="file"   formControlName="imgURL"></div>-->
-
-<!--      <div> <mat-form-field color="accent"><mat-label  id="username">Felhasználónév</mat-label><input matInput type="text"   formControlName="username"  [(ngModel)]="nevmodel" /></mat-form-field></div>-->
-
-<!--      <div> <mat-form-field color="accent"><mat-label  id="email">Emailcím</mat-label><input matInput type="text"  formControlName="email" [(ngModel)]="mailmode" /></mat-form-field></div>-->
-<!--        <div formGroupName="name">-->
-
-<!--          <div> <mat-form-field color="accent"><mat-label  id="firstname">Keresztnév</mat-label><input matInput type="text"  formControlName="firstname"  [(ngModel)]="keresztmodel" /></mat-form-field></div>-->
-
-<!--          <div> <mat-form-field color="accent"><mat-label  id="lastname">Vezetéknév</mat-label><input matInput type="text"  formControlName="lastname" [(ngModel)]="vezetekmodel" /></mat-form-field></div>-->
-
-
-<!--        </div>-->
-
-<!--        <span><button mat-raised-button color="accent" type="submit">Adatok változtatása</button></span>-->
-
-
-<!--      </form>-->
-<!--      <br>-->
-<!--      <span *ngIf="flag"> <button mat-raised-button color="accent" (click)="deleteUser()">Fiók törlése</button></span>-->
-
-<!--    </div>-->
-<!--    <div *ngIf="flag==false">-->
-<!--      <div><span>Felhasználónév:  {{item.username}}</span></div>-->
-<!--      <br>-->
-<!--      <div><span>Email cím:  {{item.email}}</span></div>-->
-<!--      <br>-->
-<!--      <div><span>Keresztnév:  {{item.name.firstname}}</span></div>-->
-<!--      <br>-->
-<!--      <div><span>Vezetéknév:  {{item.name.lastname}}</span></div>-->
-
-
-<!--    </div>-->
-
-<!--    <span> </span>-->
 
 
 

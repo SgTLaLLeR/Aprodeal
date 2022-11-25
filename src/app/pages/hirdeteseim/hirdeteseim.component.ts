@@ -28,6 +28,8 @@ export class HirdeteseimComponent implements OnInit {
   armodel='';
   leirasmodel='';
   elerhetosegmodel='';
+  namesearch: string[]=[];
+  imageModel='';
 
   editAddsForm=new FormGroup({
     nev: new FormControl(''),
@@ -70,6 +72,17 @@ export class HirdeteseimComponent implements OnInit {
   }
   onSubmit(){
     const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+    const egybenev= this.editAddsForm.get('nev')?.value;
+    const name=this.editAddsForm.get('nev')?.value;
+    const splitted=name.split(" ");
+    for(let i=0; i<splitted.length;i++){
+      for(let j=0; j<splitted[i].length;j++){
+        this.namesearch.push(splitted[i].substring(0,j+1).toLowerCase())
+      }
+    }
+    for(let i=0;i<egybenev.length;i++){
+      this.namesearch.push(egybenev.substring(0,i+1));
+    }
 
     const urlreg=this.editAddsForm.get('imageURL')?.value.split('fakepath\\');
     const hirdetes: Hirdetes={
@@ -80,7 +93,7 @@ export class HirdeteseimComponent implements OnInit {
       elerhetoseg:this.editAddsForm.get('elerhetoseg')?.value,
       imageURL:'images/'+urlreg[1],
       reportedByUserid:[],
-      namesearchfield:[],
+      namesearchfield:this.namesearch,
       visitedNumber:0,
       reportNumbers:0,
       userID:user.uid
@@ -110,6 +123,7 @@ export class HirdeteseimComponent implements OnInit {
       this.armodel=data[0].ar;
       this.leirasmodel=data[0].leiras;
       this.elerhetosegmodel=data[0].elerhetoseg;
+      this.imageModel=data[0].imageURL;
     })
   }
   async onFileChanged(event:any) {

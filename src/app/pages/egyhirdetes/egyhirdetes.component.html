@@ -20,9 +20,11 @@
 <br>
 <div class="main">
 <div class="max-w-lg mx-auto"  *ngFor="let item of hirdetes">
-  <div class="bg-whitegrey shadow-md border border-gray-200 rounded-lg max-w-md mb-5" *ngFor="let felado of currentUser">
+  <div class="bg-whitegrey shadow-md border border-gray-200 rounded-lg max-w-md mb-5 " *ngFor="let felado of currentUser">
 
-      <img class="object-contain rounded-t-lg" src="{{image}}" alt="">
+      <img *ngIf="image!='images/undefined'" class="object-contain  rounded-t-lg " src="{{image}}" alt="">
+      <img *ngIf="image=='images/undefined'" alt="hirdetés képe" src="assets/placeholder.png" class="object-contain  rounded-t-lg ">
+
 
     <div class="p-5">
       <div class="flow-root">

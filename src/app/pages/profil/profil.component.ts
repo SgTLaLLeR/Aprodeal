@@ -7,10 +7,12 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../../shared/models/Users";
 import {UserService} from "../../shared/services/user.service";
 import {FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import * as firebase from 'firebase/compat';
+import * as firebases from 'firebase/compat';
+import firebase from "firebase/compat/app"
 import {Router} from "@angular/router";
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {HirdetesService} from "../../shared/services/hirdetes.service";
+import firestore = firebase.firestore;
 
 
 
@@ -21,6 +23,8 @@ import {HirdetesService} from "../../shared/services/hirdetes.service";
 })
 
 export class ProfilComponent implements OnInit, OnChanges {
+  StoredRating: number | firestore.FieldValue=0;
+  StoredPPL: Array<string> | firestore.FieldValue=[];
 
   basePath='profile/';
   downloadableURL='';
@@ -57,7 +61,7 @@ export class ProfilComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+    const user=JSON.parse(localStorage.getItem('user') as string) as firebases.default.User;
     this.userserv.getUserById(user.uid).subscribe(userz=>{
       this.users=userz;
       this.nevmodel=userz[0].username;
@@ -103,15 +107,21 @@ export class ProfilComponent implements OnInit, OnChanges {
   }
   onSubmit(){
     const urlreg=this.editUserForm.get('imgURL')?.value.split('fakepath\\');
-    const userdata=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
+
+
+    const userdata=JSON.parse(localStorage.getItem('user') as string) as firebases.default.User;
+    this.userserv.getUserById(userdata.uid).subscribe(data=>{
+      this.StoredRating=data[0].ratingPoints;
+      this.StoredPPL=data[0].ratedByUsers;
+    })
     const user: User={
       id: userdata.uid,
       email: this.editUserForm.get('email')?.value,
       username: this.editUserForm.get('username')?.value,
       lastaddvisitedID:'',
       lastvisitedProf:'',
-      ratingPoints:0,
-      ratedByUsers:[],
+      ratingPoints:this.StoredRating,
+      ratedByUsers:this.StoredPPL,
       imgURL:'profile/'+urlreg[1],
       name:{
         firstname: this.editUserForm.get('name.firstname')?.value,
