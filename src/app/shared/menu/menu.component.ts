@@ -40,5 +40,13 @@ export class MenuComponent implements OnInit , AfterViewInit {
     }
     this.onCloseSidenav.emit(true);
   }
+  logout(_?: boolean){
+    this.authService.logout().then(() =>{
+      console.log('Sikeres kilepes');
+    }).catch(error=>{
+      console.error(error);
+    });
+
+  }
 
 }

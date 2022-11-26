@@ -33,7 +33,7 @@
     <span>Hirdetés feladása</span>
 
   </a>
-  <a mat-list-item  routerLink="/login" (click)="close(true)" *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon>
+  <a mat-list-item  routerLink="/login" (click)="close(true)" (click)="logout()" *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon>
     <span>Kijelentkezés</span>
 
   </a>
