@@ -86,7 +86,7 @@ export class HirdetesfelComponent implements OnInit {
     this.hirdetesService.create(hirdetes).then(_=>{
       console.log('Siekeres beszuras');
       alert('Sikeresen feladtad a hirdetést!');
-      this.router.navigateByUrl('./hirdetesiem');
+      this.router.navigateByUrl('/hirdeteseim');
     }).catch(error=>{
       console.error(error);
       alert('Valami nem sikerült!');
