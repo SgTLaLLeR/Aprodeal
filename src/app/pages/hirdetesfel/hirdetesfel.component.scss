@@ -3,19 +3,14 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 100%;
-
-
-
+  width: 100%;
+  //left: 150px;
 }
-
 
 .main_component{
   height: 100vh;
   align-items: center;
   font-size: 26px;
-
-
 }
 
 form div{
@@ -23,7 +18,7 @@ form div{
 }
 
 mat-form-field{
-  width: 80%;
+  width: 75%;
 
 }
 span{
