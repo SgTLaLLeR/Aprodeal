@@ -5,19 +5,11 @@
       <br>
       <br>
       <br>
-
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1>Hirdetés feladása!</h1>
-      <br>
-
-
       <form [formGroup]="hirdetesfelForm" (ngSubmit)="onSubmit()" (ngSubmit)="uploadimg()"  >
+        <h1>Hirdetés feladása!</h1>
         <div> <mat-form-field color="accent"><mat-label  id="nev">Hirdetés neve:</mat-label><input matInput type="text" formControlName="nev" required/></mat-form-field></div>
         <div><mat-form-field color="accent"><mat-label  id="ar">Ár:</mat-label><input matInput type="text" formControlName="ar" required/></mat-form-field></div>
         <div><mat-form-field color="accent"><mat-label  id="leiras">Leirás:</mat-label><input matInput type="text" formControlName="leiras" required/></mat-form-field></div>
