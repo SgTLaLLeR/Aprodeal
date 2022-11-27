@@ -36,9 +36,10 @@ export class HirdetesfelComponent implements OnInit {
   ngOnInit(): void {
   }
   async onFileChanged(event:any){
+    const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     const file=event.target.files[0];
     if(file){
-      const filePath=`${this.basePath}/${file.name}`;
+      const filePath=`${this.basePath}/${user.uid}${file.name}`;
       this.task=this.imgstore.upload(filePath,file);
 
       (await this.task).ref.getDownloadURL().then(url => {this.downloadableURL = url; });
@@ -70,7 +71,7 @@ export class HirdetesfelComponent implements OnInit {
       ar:this.hirdetesfelForm.get('ar')?.value,
       leiras:this.hirdetesfelForm.get('leiras')?.value,
       elerhetoseg:this.hirdetesfelForm.get('elerhetoseg')?.value,
-      imageURL:'images/'+urlreg[1],
+      imageURL:'images/'+user.uid+urlreg[1],
       reportedByUserid: [],
       visitedNumber:0,
       namesearchfield:this.namesearch,
@@ -84,9 +85,12 @@ export class HirdetesfelComponent implements OnInit {
     };
     this.imgstore.ref('/images').put(hirdetes.imageURL);
     this.hirdetesService.create(hirdetes).then(_=>{
+      console.log('teszt :',hirdetes.imageURL)
       console.log('Siekeres beszuras');
+
       alert('Sikeresen feladtad a hirdetést!');
       this.router.navigateByUrl('/hirdeteseim');
+
     }).catch(error=>{
       console.error(error);
       alert('Valami nem sikerült!');
@@ -95,6 +99,7 @@ export class HirdetesfelComponent implements OnInit {
   }
   path='/images'
   upload(event : any){
+
     this.path=event.target.files[0]
     console.log(this.path)
 

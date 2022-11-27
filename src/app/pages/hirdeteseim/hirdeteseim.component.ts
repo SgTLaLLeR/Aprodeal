@@ -91,7 +91,7 @@ export class HirdeteseimComponent implements OnInit {
       ar:this.editAddsForm.get('ar')?.value,
       leiras:this.editAddsForm.get('leiras')?.value,
       elerhetoseg:this.editAddsForm.get('elerhetoseg')?.value,
-      imageURL:'images/'+urlreg[1],
+      imageURL:'images/'+user.uid+urlreg[1],
       reportedByUserid:[],
       namesearchfield:this.namesearch,
       visitedNumber:0,
@@ -127,9 +127,10 @@ export class HirdeteseimComponent implements OnInit {
     })
   }
   async onFileChanged(event:any) {
+    const user=JSON.parse(localStorage.getItem('user') as string) as firebase.default.User;
     const file = event.target.files[0];
     if (file) {
-      const filePath = `${this.basePath}/${file.name}`;
+      const filePath = `${this.basePath}/${user.uid}${file.name}`;
       this.task = this.imgstore.upload(filePath, file);
 
       (await this.task).ref.getDownloadURL().then(url => {
